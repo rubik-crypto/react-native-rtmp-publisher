@@ -8,6 +8,7 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.reactnativertmppublisher.enums.AudioInputType;
+import android.util.Log;
 
 public class RTMPModule extends ReactContextBaseJavaModule {
   private final String REACT_MODULE_NAME = "RTMPPublisher";
@@ -96,10 +97,11 @@ public class RTMPModule extends ReactContextBaseJavaModule {
   public void mute(Promise promise) {
     try {
       if (RTMPManager.publisher.isAudioMuted()) {
+        promise.resolve(true);
         return;
       }
-
       RTMPManager.publisher.disableAudio();
+      promise.resolve(true);
     } catch (Exception e) {
       promise.reject(e);
     }
@@ -109,10 +111,12 @@ public class RTMPModule extends ReactContextBaseJavaModule {
   public void unmute(Promise promise) {
     try {
       if (!RTMPManager.publisher.isAudioMuted()) {
+        promise.resolve(false);
         return;
       }
 
       RTMPManager.publisher.enableAudio();
+      promise.resolve(true);
     } catch (Exception e) {
       promise.reject(e);
     }
@@ -122,6 +126,7 @@ public class RTMPModule extends ReactContextBaseJavaModule {
   public void switchCamera(Promise promise) {
     try {
       RTMPManager.publisher.switchCamera();
+      promise.resolve(true);
     } catch (Exception e) {
       promise.reject(e);
     }
@@ -131,6 +136,7 @@ public class RTMPModule extends ReactContextBaseJavaModule {
   public void startStream(Promise promise) {
     try {
       RTMPManager.publisher.startStream();
+      promise.resolve(true);
     } catch (Exception e) {
       promise.reject(e);
     }
@@ -140,6 +146,7 @@ public class RTMPModule extends ReactContextBaseJavaModule {
   public void stopStream(Promise promise) {
     try {
       RTMPManager.publisher.stopStream();
+      promise.resolve(true);
     } catch (Exception e) {
       promise.reject(e);
     }
@@ -149,6 +156,7 @@ public class RTMPModule extends ReactContextBaseJavaModule {
   public void toggleFlash(Promise promise) {
     try {
       RTMPManager.publisher.toggleFlash();
+      promise.resolve(true);
     } catch (Exception e) {
       promise.reject(e);
     }
@@ -159,6 +167,7 @@ public class RTMPModule extends ReactContextBaseJavaModule {
     try {
       AudioInputType selectedType = AudioInputType.values()[audioInputType];
       RTMPManager.publisher.setAudioInput(selectedType);
+      promise.resolve(true);
     } catch (Exception e) {
       promise.reject(e);
     }

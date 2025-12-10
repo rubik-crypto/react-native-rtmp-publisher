@@ -59,17 +59,17 @@ export interface RTMPPublisherRefProps {
   setAudioInput: (audioInput: AudioInputType) => Promise<void>;
 }
 
-export interface RTMPPublisherProps {
-  style?: ViewStyle;
-  streamURL: string;
-  streamName: string;
-  onConnectionFailed?: (e: null) => void;
-  onConnectionStarted?: (e: null) => void;
-  onConnectionSuccess?: (e: null) => void;
-  onDisconnect?: (e: null) => void;
-  onNewBitrateReceived?: (e: number) => void;
-  onStreamStateChanged?: (e: StreamState) => void;
-}
+// export interface RTMPPublisherProps {
+//   style?: ViewStyle;
+//   streamURL: string;
+//   streamName: string;
+//   onConnectionFailed?: (e: null) => void;
+//   onConnectionStarted?: (e: null) => void;
+//   onConnectionSuccess?: (e: null) => void;
+//   onDisconnect?: (e: null) => void;
+//   onNewBitrateReceived?: (e: number) => void;
+//   onStreamStateChanged?: (e: StreamState) => void;
+// }
 export type StreamStatus =
   | 'CONNECTING'
   | 'CONNECTED'
@@ -93,3 +93,41 @@ export enum AudioInputType {
   SPEAKER = 1,
   WIRED_HEADSET = 2,
 }
+
+export interface RTMPPublisherProps {
+  testID?: string;
+  style?: ViewStyle;
+  streamURL: string;
+  streamName: string;
+  /**
+   * Callback for connection fails on RTMP server
+   */
+  onConnectionFailed?: (data: string) => void;
+  /**
+   * Callback for starting connection to RTMP server
+   */
+  onConnectionStarted?: (data: string) => void;
+  /**
+   * Callback for connection successfully to RTMP server
+   */
+  onConnectionSuccess?: (data: null) => void;
+  /**
+   * Callback for disconnect successfully to RTMP server
+   */
+  onDisconnect?: (data: null) => void;
+  /**
+   * Callback for receiving new bitrate value about stream
+   */
+  onNewBitrateReceived?: (data: number) => void;
+  /**
+   * Alternatively callback for changing stream state
+   * Returns parameter StreamState type
+   */
+  onStreamStateChanged?: (data: StreamState) => void;
+  /**
+   * Callback for bluetooth device connection changes
+   */
+  onBluetoothDeviceStatusChanged?: (data: BluetoothDeviceStatuses) => void;
+}
+
+export { default } from './RTMPPublisher';
