@@ -1,5 +1,3 @@
-### ⚠️⚠️⚠️ THIS PACKAGE CURRENTLY UNMAINTENED. WILL RE-MAINTENED IN SOON WITH NEW ARCH ⚠️⚠️⚠️
-
 <p align="center">
 <img src="https://user-images.githubusercontent.com/42299721/200197084-5e8ebcf2-320e-49cf-8504-0ad94773c218.png" alt="logo" width="90%"/>
 
@@ -14,7 +12,6 @@
 </p>
 
 📹 Live stream RTMP publisher for React Native with built in camera support!
-
 ## Installation
 
 ```sh
