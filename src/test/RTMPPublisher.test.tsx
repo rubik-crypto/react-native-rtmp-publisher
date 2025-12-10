@@ -1,6 +1,7 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
-import RTMPPublisher, { RTMPPublisherProps } from '../RTMPPublisher';
+import RTMPPublisher from '../RTMPPublisher';
+import type { RTMPPublisherProps } from '../types';
 
 const onDisconnectMock = jest.fn();
 const onConnectionFailedMock = jest.fn();
