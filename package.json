@@ -2,6 +2,8 @@
   "name": "react-native-rtmp-publisher",
   "version": "0.4.7",
   "description": "RTM Publisher for React Native",
+  "main": "lib/commonjs/index",
+  "module": "lib/module/index",
   "types": "src/types",
   "react-native": "src/index",
   "source": "src/index",
