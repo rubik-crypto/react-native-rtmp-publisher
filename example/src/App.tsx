@@ -1,22 +1,22 @@
 import React, { useRef, useState } from 'react';
 
-import { View, Platform } from 'react-native';
+import { Platform, View } from 'react-native';
 import RTMPPublisher, {
-  RTMPPublisherRefProps,
-  StreamState,
   AudioInputType,
   BluetoothDeviceStatuses,
+  RTMPPublisherRefProps,
+  StreamState,
 } from 'react-native-rtmp-publisher';
 
 import styles from './App.styles';
 
 import Button from './components/Button';
 import LiveBadge from './components/LiveBadge';
-import usePermissions from './hooks/usePermissions';
 import MicrophoneSelectModal from './components/MicrophoneSelectModal';
+import usePermissions from './hooks/usePermissions';
 
-const STREAM_URL = 'YOUR_STREAM_URL'; // ex: rtmp://a.rtmp.youtube.com/live2
-const STREAM_NAME = 'YOUR_STREAM_NAME'; // ex: abcd-1234-abcd-1234-abcd
+const STREAM_URL = 'rtmp://192.168.2.2:1935/live'; // ex: rtmp://a.rtmp.youtube.com/live2
+const STREAM_NAME = '693931dd1b021e7def11b8d3'; // ex: abcd-1234-abcd-1234-abcd
 
 export default function App() {
   const publisherRef = useRef<RTMPPublisherRefProps>(null);
@@ -65,7 +65,7 @@ export default function App() {
   };
 
   const handleStartStream = () => {
-    publisherRef.current && publisherRef.current.startStream();
+    publisherRef.current && publisherRef.current.startStream('low');
   };
 
   const handleStopStream = () => {
