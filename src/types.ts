@@ -1,10 +1,12 @@
 import type { ViewStyle } from 'react-native';
 
+export type Quality = 'low' | 'medium' | 'high' | 'veryHigh';
+
 export interface RTMPPublisherRefProps {
   /**
    * Starts stream operation
    */
-  startStream: () => Promise<void>;
+  startStream: (quality: Quality) => Promise<void>;
   /**
    * Stops stream operation
    */

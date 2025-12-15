@@ -11,6 +11,7 @@ import PublisherComponent, {
 } from './Component';
 import type {
   AudioInputType,
+  Quality,
   RTMPPublisherProps,
   RTMPPublisherRefProps
 } from './types';
@@ -31,7 +32,8 @@ const RTMPPublisher = forwardRef<RTMPPublisherRefProps, RTMPPublisherProps>(
     },
     ref
   ) => {
-    const startStream = async () => await RTMPModule.startStream();
+    const startStream = async (quality: Quality) =>
+      await RTMPModule.startStream(quality);
 
     const stopStream = async () => await RTMPModule.stopStream();
 

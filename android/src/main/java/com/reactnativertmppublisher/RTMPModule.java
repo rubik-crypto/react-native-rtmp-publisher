@@ -133,9 +133,9 @@ public class RTMPModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void startStream(Promise promise) {
+  public void startStream(String quality,Promise promise) {
     try {
-      RTMPManager.publisher.startStream();
+      RTMPManager.publisher.startStream(quality);
       promise.resolve(true);
     } catch (Exception e) {
       promise.reject(e);

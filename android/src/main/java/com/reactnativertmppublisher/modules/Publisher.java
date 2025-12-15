@@ -17,6 +17,7 @@ import com.reactnativertmppublisher.enums.AudioInputType;
 import com.reactnativertmppublisher.enums.StreamState;
 import com.reactnativertmppublisher.interfaces.ConnectionListener;
 import com.reactnativertmppublisher.utils.ObjectCaster;
+import com.reactnativertmppublisher.enums.StreamQuality;
 
 public class Publisher {
   private final SurfaceView _surfaceView;
@@ -175,20 +176,34 @@ public class Publisher {
     }
   }
 
-  public void startStream() {
-    try {
-      boolean isAudioPrepared = _rtmpCamera.prepareAudio(MediaRecorder.AudioSource.DEFAULT, 128 * 1024, 44100, true, false, false);
-      boolean isVideoPrepared = _rtmpCamera.prepareVideo(1280 , 720, 3000 * 1024);
+  public void startStream(String quality) {
+      // 使用StreamQuality.fromString()方法将字符串转换为枚举
+      StreamQuality streamQuality = StreamQuality.fromString(quality);
+      
+      try {
+          // 使用streamQuality对象而不是quality字符串
+          boolean isAudioPrepared = _rtmpCamera.prepareAudio(
+              MediaRecorder.AudioSource.DEFAULT,
+              streamQuality.getAudioBitrate(),
+              streamQuality.getAudioSampleRate(),
+              streamQuality.isStereo(),
+              false,
+              false
+          );
+          boolean isVideoPrepared = _rtmpCamera.prepareVideo(
+              streamQuality.getWidth(),
+              streamQuality.getHeight(),
+              streamQuality.getVideoBitrate()
+          );
+          if (!isAudioPrepared || !isVideoPrepared || _streamName == null || _streamUrl == null) {
+              return;
+          }
 
-      if (!isAudioPrepared || !isVideoPrepared || _streamName == null || _streamUrl == null) {
-        return;
+          String url = _streamUrl + "/" + _streamName;
+          _rtmpCamera.startStream(url);
+      } catch (Exception e) {
+          e.printStackTrace();
       }
-
-      String url = _streamUrl + "/" + _streamName;
-      _rtmpCamera.startStream(url);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
   }
 
   public void stopStream() {
