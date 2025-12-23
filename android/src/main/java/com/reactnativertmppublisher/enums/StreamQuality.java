@@ -7,7 +7,7 @@ package com.reactnativertmppublisher.enums;
 // 分辨率
 public enum StreamQuality {
     LOW(640, 480, 800 * 1024, 64 * 1024, 22050, false),
-    HIGH(1280, 720, 3000 * 1024, 128 * 1024, 44100, true),
+    HIGH(1280, 720, 3000 * 1024, 128 * 1024, 44100, true);
     
     private final int width;
     private final int height;
