@@ -195,13 +195,16 @@ public class Publisher {
               streamQuality.getHeight(),
               streamQuality.getVideoBitrate()
           );
+          Log.d("ReactNative", String.format("isAudioPrepared: %s, isVideoPrepared: %s", isAudioPrepared, isVideoPrepared));
           if (!isAudioPrepared || !isVideoPrepared || _streamName == null || _streamUrl == null) {
               return;
           }
 
           String url = _streamUrl + "/" + _streamName;
           _rtmpCamera.startStream(url);
+          Log.d("ReactNative", String.format("isStreaming: %s", _rtmpCamera.isStreaming()));
       } catch (Exception e) {
+          Log.d("ReactNative", e.getMessage());
           e.printStackTrace();
       }
   }

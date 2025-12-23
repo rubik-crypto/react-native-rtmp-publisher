@@ -13,7 +13,7 @@ import type {
   AudioInputType,
   Quality,
   RTMPPublisherProps,
-  RTMPPublisherRefProps
+  RTMPPublisherRefProps,
 } from './types';
 
 const RTMPModule = NativeModules.RTMPPublisher;

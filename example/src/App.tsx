@@ -65,7 +65,7 @@ export default function App() {
   };
 
   const handleStartStream = () => {
-    publisherRef.current && publisherRef.current.startStream('low');
+    publisherRef.current && publisherRef.current.startStream('high');
   };
 
   const handleStopStream = () => {

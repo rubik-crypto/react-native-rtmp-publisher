@@ -1,6 +1,6 @@
 import type { ViewStyle } from 'react-native';
 
-export type Quality = 'low' | 'medium' | 'high' | 'veryHigh';
+export type Quality = 'low' | 'high';
 
 export interface RTMPPublisherRefProps {
   /**
